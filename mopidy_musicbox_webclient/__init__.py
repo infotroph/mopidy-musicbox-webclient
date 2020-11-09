@@ -8,7 +8,7 @@ __version__ = pkg_resources.get_distribution(
     "Mopidy-MusicBox-Webclient"
 ).version
 
-class WebTvOnHandler(RequestHandler):
+class WebTvOnHandler:
 
     def initialize(self): pass
 
@@ -16,7 +16,7 @@ class WebTvOnHandler(RequestHandler):
         logger.info('Turning TV on via CEC')
         os.system("echo 'on 0' | /usr/bin/cec-client -s")
 
-class WebTvOffHandler(RequestHandler):
+class WebTvOffHandler:
 
     def initialize(self): pass
 
