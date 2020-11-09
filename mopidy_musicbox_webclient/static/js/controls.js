@@ -885,6 +885,22 @@
             setTimeout(function () {
                 window.history.back()
             }, 10000)
+        },
+
+        tvOn: function () {
+            $.post('/tvOn')
+            toast('Turning TV on...', 10000)
+            setTimeout(function () {
+                window.history.back()
+            }, 10000)
+        },
+
+        tvOff: function () {
+            $.post('/tvOff')
+            toast('Turning TV off...', 10000)
+            setTimeout(function () {
+                window.history.back()
+            }, 10000)
         }
     }
     return controls

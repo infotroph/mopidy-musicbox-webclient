@@ -8,6 +8,21 @@ __version__ = pkg_resources.get_distribution(
     "Mopidy-MusicBox-Webclient"
 ).version
 
+class WebTvOnHandler(tornado.web.RequestHandler):
+
+    def initialize(self): pass
+
+    def post(self):
+        logger.info('Turning TV on via CEC')
+        os.system("echo 'on 0' | /usr/bin/cec-client -s")
+
+class WebTvOffHandler(tornado.web.RequestHandler):
+
+    def initialize(self): pass
+
+    def post(self):
+        logger.info('Turning TV off via CEC')
+        os.system("echo 'standby 0' | /usr/bin/cec-client -s")
 
 class Extension(ext.Extension):
 
@@ -49,5 +64,7 @@ class Extension(ext.Extension):
         return [
             (r"/", RedirectHandler, {"url": "index.html"}),
             (r"/(index.html)", IndexHandler, {"config": config, "path": path}),
+            (r"/tvOn",  WebTvOnHandler,),
+            (r"/tvOff",  WebTvOffHandler,),
             (r"/(.*)", StaticHandler, {"path": path}),
         ]
