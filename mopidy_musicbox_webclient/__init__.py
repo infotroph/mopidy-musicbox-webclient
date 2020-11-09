@@ -8,7 +8,7 @@ __version__ = pkg_resources.get_distribution(
     "Mopidy-MusicBox-Webclient"
 ).version
 
-class WebTvOnHandler(tornado.web.RequestHandler):
+class WebTvOnHandler(RequestHandler):
 
     def initialize(self): pass
 
@@ -16,7 +16,7 @@ class WebTvOnHandler(tornado.web.RequestHandler):
         logger.info('Turning TV on via CEC')
         os.system("echo 'on 0' | /usr/bin/cec-client -s")
 
-class WebTvOffHandler(tornado.web.RequestHandler):
+class WebTvOffHandler(RequestHandler):
 
     def initialize(self): pass
 
