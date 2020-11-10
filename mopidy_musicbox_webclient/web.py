@@ -3,6 +3,7 @@ import logging
 import socket
 import string
 import urllib.parse
+import os
 
 import tornado.web
 
@@ -10,6 +11,23 @@ import mopidy_musicbox_webclient.webclient as mmw
 
 logger = logging.getLogger(__name__)
 
+class TvOnHandler(tornado.web.RequestHandler):
+
+    def initialize(self): pass
+
+    def post(self):
+        logger.info('Turning TV on via CEC')
+        os.system("/bin/echo 'on 0' | /usr/bin/cec-client -s -d 1")
+        return
+
+class TvOffHandler(tornado.web.RequestHandler):
+
+    def initialize(self): pass
+
+    def post(self):
+        logger.info('Turning TV off via CEC')
+        os.system("/bin/echo 'standby 0' | /usr/bin/cec-client -s -d 1")
+        return
 
 class StaticHandler(tornado.web.StaticFileHandler):
     def get(self, path, *args, **kwargs):
