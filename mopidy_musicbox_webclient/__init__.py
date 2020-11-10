@@ -14,7 +14,7 @@ class WebTvOnHandler:
 
     def post(self):
         logger.info('Turning TV on via CEC')
-        os.system("echo 'on 0' | /usr/bin/cec-client -s")
+        os.system("/bin/echo 'on 0' | /usr/bin/cec-client -s")
 
 class WebTvOffHandler:
 
@@ -22,7 +22,7 @@ class WebTvOffHandler:
 
     def post(self):
         logger.info('Turning TV off via CEC')
-        os.system("echo 'standby 0' | /usr/bin/cec-client -s")
+        os.system("/bin/echo 'standby 0' | /usr/bin/cec-client -s")
 
 class Extension(ext.Extension):
 
