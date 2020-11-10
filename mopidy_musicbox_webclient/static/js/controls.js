@@ -888,7 +888,7 @@
         },
 
         tvOn: function () {
-            $.post('/tvOn')
+            $.post('/musicbox_webclient/tvOn')
             toast('Turning TV on...', 10000)
             setTimeout(function () {
                 window.history.back()
@@ -896,7 +896,7 @@
         },
 
         tvOff: function () {
-            $.post('/tvOff')
+            $.post('/musicbox_webclient/tvOff')
             toast('Turning TV off...', 10000)
             setTimeout(function () {
                 window.history.back()
