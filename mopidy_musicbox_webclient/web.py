@@ -44,7 +44,7 @@ class tidalAuthHandler(tornado.web.RequestHandler):
         link = link[-1] if link else ''
         logger.debug("Tidal link: %s", link)
         self.__dict = {
-            tidal_auth_link: link
+            "tidal_auth_link": link
         }
 
     def post(self):
