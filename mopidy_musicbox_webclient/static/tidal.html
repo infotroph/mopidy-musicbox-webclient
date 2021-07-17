@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>System</title>
+    <title>Log in to Tidal</title>
     <meta charset="utf-8">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -21,12 +21,13 @@
 <body>
 <div data-role="page"  data-dialog="true" >
 
+    <p><a href="{{tidal_auth_link}}" data-rel="external">{{tidal_auth_link}}</a></p>
+
     <div data-role="content" data-theme="b">
-	<h3>System</h3>
-	<a href="#" onclick="controls.haltSystem(); return false;" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Shutdown</a>
-	<a href="#" onclick="controls.rebootSystem(); return false;" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Reboot</a>
-    <a href="#" onclick="controls.tidalAuth(); return false;" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Log in to Tidal</a>
-	<a href="index.html" data-role="button" data-rel="back" data-theme="a">Home</a>
+	<h3>Log in to Tidal</h3>
+	<a href="#" onclick="controls.tidalAuth(); return false;" data-role="button" data-rel="dialog" data-transition="slidedown" data-theme="b">Log in</a>
+    <a href="system.html" data-role="button" data-theme="a">System controls</a>
+	<a href="index.html" data-role="button" data-rel="back" data-theme="a">Home</a>    
     </div>
 </div>
 

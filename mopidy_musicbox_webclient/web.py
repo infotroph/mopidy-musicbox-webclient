@@ -4,6 +4,7 @@ import socket
 import string
 import urllib.parse
 import os
+import subprocess
 
 import tornado.web
 
@@ -27,6 +28,25 @@ class TvOffHandler(tornado.web.RequestHandler):
     def post(self):
         logger.info('Turning TV off via CEC')
         os.system("/bin/echo 'standby 0' | /usr/bin/cec-client -s -d 1")
+        return
+
+class tidalAuthHandler(tornado.web.RequestHandler):
+
+    def initialize(self):
+        log_contents = subprocess.run(
+            ['journalctl', '-u' 'mopidy'],
+            capture_output = True
+        ).stdout
+        link = re.findall(
+            'link.tidal.com/\w+',
+            log_contents.decode('utf-8'))
+        self.__dict = {
+            tidal_auth_link: link[-1] if link else ''
+        }
+
+    def post(self):
+        # WIP
+        # logger.info('Entering Tidal OAuth challenge code')
         return
 
 class StaticHandler(tornado.web.StaticFileHandler):

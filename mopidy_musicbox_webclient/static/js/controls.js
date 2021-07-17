@@ -901,6 +901,14 @@
             setTimeout(function () {
                 window.history.back()
             }, 10000)
+        },
+
+        tidalAuth: function () {
+            $.post('/musicbox_webclient/tidalAuth')
+            toast('Logging in to Tidal...', 10000)
+            setTimeout(function () {
+                window.history.back()
+            }, 10000)
         }
     }
     return controls

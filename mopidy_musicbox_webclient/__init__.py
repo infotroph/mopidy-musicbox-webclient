@@ -42,7 +42,8 @@ class Extension(ext.Extension):
 
     def factory(self, config, core):
         from tornado.web import RedirectHandler
-        from .web import IndexHandler, StaticHandler, TvOnHandler, TvOffHandler
+        from .web import IndexHandler, StaticHandler,
+            TvOnHandler, TvOffHandler, tidalAuthHandler
 
         path = pathlib.Path(__file__).parent / "static"
         return [
@@ -50,5 +51,6 @@ class Extension(ext.Extension):
             (r"/(index.html)", IndexHandler, {"config": config, "path": path}),
             (r"/tvOn",  TvOnHandler),
             (r"/tvOff", TvOffHandler),
+            (r"/tidalAuth", tidalAuthHandler),
             (r"/(.*)", StaticHandler, {"path": path}),
         ]
