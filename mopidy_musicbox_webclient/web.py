@@ -40,8 +40,10 @@ class tidalAuthHandler(tornado.web.RequestHandler):
         link = re.findall(
             'link.tidal.com/\w+',
             log_contents.decode('utf-8'))
+        link = link[-1] if link else ''
+        logger.debug("Tidal link: %s", link)
         self.__dict = {
-            tidal_auth_link: link[-1] if link else ''
+            tidal_auth_link: link
         }
 
     def post(self):
